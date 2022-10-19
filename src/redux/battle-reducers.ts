@@ -46,19 +46,7 @@ export  const battleReducer = (state = initialState, action) => {
                 ...state,
                 inputPlayerTwo : action.payload
             };
-
-        // case 'SET_WINNER':
-        //     return {
-        //         ...state,
-        //         winner : action.payload
-        //     };
-
-        // case 'SET_LOSER':
-        //     return {
-        //         ...state,
-        //         loser : action.payload
-        //     };
-
+     
         case 'BATTLE_PLAYERS_REQUEST':
             return {
                 ...state,

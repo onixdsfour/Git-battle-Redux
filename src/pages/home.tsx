@@ -1,7 +1,7 @@
-import React from 'react';
+import {FC} from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home: FC = (): JSX.Element => {
     return (
         <div className='home-container'>          
             <Link className='button' to='/battle'>Battle</Link>

@@ -1,4 +1,4 @@
-const Api = async (url, method = `GET`, obj) => {
+const Api = async (url: string, method:string = `GET`): Promise<any> => {
     try {
       
         let options = {
@@ -7,7 +7,7 @@ const Api = async (url, method = `GET`, obj) => {
             'Content-type': 'application/json; charset=UTF-8',
           }
         }
-        if(obj) options.body = JSON.stringify(obj);
+        // if(obj) options.body = JSON.stringify(obj);
   
         let request = await fetch(url, options);
         let response = await request.json();

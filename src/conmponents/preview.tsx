@@ -1,4 +1,12 @@
-const PlayerPreview = (props) => (
+import { FC } from "react";
+
+interface Iprops {
+    userName : string;
+    img: string;
+    children: JSX.Element | JSX.Element[];
+}
+
+const PlayerPreview: FC<Iprops> = (props: Iprops): JSX.Element => (
         
         <div className="column">
            <div >

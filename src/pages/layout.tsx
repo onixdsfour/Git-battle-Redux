@@ -1,15 +1,16 @@
+import { FC } from "react";
 import { NavLink, Outlet} from "react-router-dom";
 
-const Nav = (props) => {
+const Nav: FC = (): JSX.Element => {
   
-    const navLinks = ['Home' , 'Popular' , 'Battle'];
+    const navLinks: string[] = ['Home' , 'Popular' , 'Battle'];
     
     return (
         <>
         <header>
             <nav>
                 <ul className="nav">
-                    {navLinks.map((navLink, index) => 
+                    {navLinks.map((navLink: string, index: number):JSX.Element  => 
                         <li key={index}>
                             <NavLink className="nav" to={navLink === 'Home' ? '/' : navLink.toLowerCase()}> {navLink}</NavLink></li>
                     )}

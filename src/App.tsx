@@ -1,4 +1,3 @@
-
 import './App.css';
 import { HashRouter, Routes, Route} from "react-router-dom";
 import Home from './pages/home';
@@ -6,9 +5,10 @@ import Popular from './pages/popular';
 import Battle from './pages/battle';
 import Layout from './pages/layout';
 import Results from './conmponents/results'; 
+import {FC} from 'react';
 
-function App() {
-  
+
+const App: FC = (): JSX.Element =>  {  
 
   return (
     <div className="App">

@@ -1,4 +1,6 @@
 
+import { type } from 'os';
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link , useLocation } from 'react-router-dom';
 import PlayerInput from '../conmponents/PlayerInput';
@@ -6,17 +8,19 @@ import PlayerPreview from '../conmponents/preview';
 import { setPlayerOne, setPlayerTwo,        
         setInputOne, setInputTwo
 } from '../redux/battle-actions';
+import { RootState } from '../redux/store';
 
-const Battle = () => {
+
+const Battle: FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
     const location = useLocation(); 
-    const playerOne = useSelector(state => state.battleReducer.playerOne);
-    const playerOneImage = useSelector(state => state.battleReducer.playerOneImage);
-    const playerTwo = useSelector(state => state.battleReducer.playerTwo);
-    const playerTwoImage = useSelector(state => state.battleReducer.playerTwoImage);
+    const playerOne: string = useSelector((state: RootState) => state.battleReducer.playerOne);
+    const playerOneImage: string = useSelector((state: RootState) => state.battleReducer.playerOneImage);
+    const playerTwo: string = useSelector((state: RootState) => state.battleReducer.playerTwo);
+    const playerTwoImage: string = useSelector((state: RootState) => state.battleReducer.playerTwoImage);
 
-    const handleReset = (id) => {
+    const handleReset = (id: string): void => {
         if(id === 'playerOne'){
             dispatch(setPlayerOne(['','']));           
             dispatch(setInputOne(''));
@@ -31,8 +35,8 @@ const Battle = () => {
             <div className='row'>
                 {!playerOne ?
                     <PlayerInput 
-                        id='playerOne'
-                        label='Player 1'                       
+                        id ='playerOne'
+                        label ='Player 1'                       
                     /> : 
                     <PlayerPreview 
                         userName={playerOne}

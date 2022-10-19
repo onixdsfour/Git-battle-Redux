@@ -1,16 +1,25 @@
 
+import { FC } from "react";
+import { FormEvent } from "react";
+import { ChangeEvent } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { setInputTwo, setInputOne } from "../redux/battle-actions";
 import { setPlayerOne, setPlayerTwo } from '../redux/battle-actions';
+import { RootState } from '../redux/store'
 
-const PlayerInput = (props) => {
+interface Iprops {
+    id: string;
+    label: string;    
+};
+
+const PlayerInput: FC<Iprops> = (props): JSX.Element => {
    
     const dispatch =  useDispatch();
-    const inputPlayerOne = useSelector(state => state.battleReducer.inputPlayerOne);
-    const inputPlayerTwo = useSelector(state => state.battleReducer.inputPlayerTwo);
+    const inputPlayerOne = useSelector((state: RootState) => state.battleReducer.inputPlayerOne);
+    const inputPlayerTwo = useSelector((state: RootState) => state.battleReducer.inputPlayerTwo);
     const userName = (props.id === 'playerOne') ? inputPlayerOne : inputPlayerTwo;    
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
 
         if(props.id === 'playerOne'){
@@ -19,9 +28,9 @@ const PlayerInput = (props) => {
             dispatch(setPlayerTwo([inputPlayerTwo, 'https://github.com/' + inputPlayerTwo + '.png?size=200' ]));           
         }
     };
-
+    
     return (
-        <form className="column" onSubmit={handleSubmit}>
+        <form className="column" onSubmit ={handleSubmit}>
             <label htmlFor="username">{props.label}</label>
             <input 
                 id='username'
@@ -29,7 +38,7 @@ const PlayerInput = (props) => {
                 value={userName} 
                 placeholder='Github username'
                 autoComplete="off"
-                onChange={(e) => dispatch(props.id === 'playerOne' ? 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => dispatch(props.id === 'playerOne' ? 
                                     setInputOne(e.target.value) : 
                                     setInputTwo(e.target.value) )}
             />

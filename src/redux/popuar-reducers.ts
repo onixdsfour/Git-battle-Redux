@@ -1,11 +1,21 @@
-const initialState = {
+import {AnyAction} from 'redux'
+
+export interface IPopularstate {
+    selectedLanguage: string;
+    loading: boolean;
+    repos: {[key: string]: any}[];
+    err: null | string;
+}
+
+
+const initialState: IPopularstate = {
     selectedLanguage: 'All',
     loading: false,
-    repos : [],
+    repos: [],
     err: null
 };
 
-export  const popularReducer = (state = initialState, action) => {
+export  const popularReducer = (state: IPopularstate = initialState, action: AnyAction): IPopularstate => {
     
     switch (action.type) {
         case 'POPULAR_REPOS_REQUEST':

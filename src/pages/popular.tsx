@@ -3,10 +3,12 @@ import SelectedLanguages from '../conmponents/SelectedLanguages';
 import Repos from '../conmponents/Repos';
 import {ThreeCircles} from  'react-loader-spinner';
 import { useSelector } from 'react-redux';
+import { FC } from 'react';
+import { RootState } from '../redux/store';
 
-const Popular = () => {       
+const Popular: FC = (): JSX.Element => {       
     console.log('popular component') ;
-    const loader = useSelector(state => state.popularReducer.loading);
+    const loader = useSelector((state: RootState) => state.popularReducer.loading);
 
     return (        
         <>            
